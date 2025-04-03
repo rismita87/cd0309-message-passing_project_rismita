@@ -1,0 +1,1 @@
+kubectl exec -i $1 -- bash -c "/opt/kafka/bin/kafka-topics.sh --create --topic udaconnect_person_create --bootstrap-server localhost:9092"
