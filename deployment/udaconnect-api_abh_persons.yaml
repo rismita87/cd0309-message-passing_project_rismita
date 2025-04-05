@@ -31,7 +31,7 @@ spec:
         service: udaconnect-api-abhi-personservice
     spec:
       containers:
-      - image: abhirupaec2022/abh_udaconnect:latest
+      - image: abhirupaec2022/abh_udaconnect_personservice:latest
         name: udaconnect-api-abhi-personservice
         imagePullPolicy: Always
         env:
