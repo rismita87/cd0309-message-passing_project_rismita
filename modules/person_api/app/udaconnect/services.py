@@ -35,15 +35,17 @@ class PersonService:
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
         )
 
-        # Sending JSON data
-        producer.send(topic, {'name': 'abhirup4'}).add_callback(on_send_success).add_errback(on_send_error)
-
+        
         new_person.first_name = person["first_name"]
         new_person.last_name = person["last_name"]
         new_person.company_name = person["company_name"]
 
-        db.session.add(new_person)
-        db.session.commit()
+        # Sending JSON data
+        producer.send(topic, person).add_callback(on_send_success).add_errback(on_send_error)
+
+        #blocked as data write will happen via kafka
+        #db.session.add(new_person)
+        #db.session.commit()
 
         return new_person
 

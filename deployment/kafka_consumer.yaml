@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-consumer-person
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-consumer-person
+  template:
+    metadata:
+      labels:
+        app: kafka-consumer-person
+    spec:
+      containers:
+        - name: kafka-consumer-person
+          image: abhirupaec2022/kafkapolller-persons:latest
+          imagePullPolicy: Always
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: "kafka-broker:9092"
