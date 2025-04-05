@@ -1,3 +1,5 @@
 jsonschema==3.0.2
-
 kafka-python==2.1.4
+psycopg2-binary==2.9.10
+
+
