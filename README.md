@@ -85,6 +85,7 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 7. `sh scripts/run_db_command.sh <POD_NAME>` - Seed your database against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`)
 8. `sh ./create_kafka_topics.sh  <POD_NAME>` - Run this command to create the topics of kafka
 9. `kubectl apply -f deployment/kafka_consumer.yaml` - Set up kafka consumer which will poll the topic and insert data into the db
+10. `kubectl apply -f deployment/udaconnect-api_abh_persons` - Set up the person service and deployment for the person API
 
 Manually applying each of the individual `yaml` files is cumbersome but going through each step provides some context on the content of the starter project. In practice, we would have reduced the number of steps by running the command against a directory to apply of the contents: `kubectl apply -f deployment/`.
 

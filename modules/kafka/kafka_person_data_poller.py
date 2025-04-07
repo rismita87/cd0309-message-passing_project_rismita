@@ -56,16 +56,26 @@ consumer = KafkaConsumer(
 )
 
 # Consume messages from the Kafka topic
-for message in consumer:
+
+
+
+def main() -> None:
+    for message in consumer:
     # Extract the message value
-    person_data = message.value
-    id = person_data.get("id")
-    first_name = person_data.get("first_name")
-    last_name = person_data.get("last_name")
-    company_name = person_data.get("company_name")
-    
-    # Insert the data into PostgreSQL
-    insert_into_postgres(id,first_name, last_name, company_name)
+        person_data = message.value
+        id = person_data.get("id")
+        first_name = person_data.get("first_name")
+        last_name = person_data.get("last_name")
+        company_name = person_data.get("company_name")
+        
+        # Insert the data into PostgreSQL
+        insert_into_postgres(id,first_name, last_name, company_name)
+
+
+if __name__ == "__main__":
+    main()
+
+
 
 
 
