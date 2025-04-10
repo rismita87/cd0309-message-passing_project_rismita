@@ -1,4 +1,7 @@
 import logging
+import grpc
+from app.udaconnect import personlist_pb2
+from app.udaconnect import personlist_pb2_grpc
 from datetime import datetime, timedelta
 from typing import Dict, List
 
@@ -30,7 +33,7 @@ class ConnectionService:
         ).all()
 
         # Cache all users in memory for quick lookup
-        person_map: Dict[str, Person] = {person.id: person for person in PersonService.retrieve_all()}
+        person_map: Dict[str, Person] = {person.id: person for person in PersonListService.getPersonList()}
 
         # Prepare arguments for queries
         data = []
@@ -111,24 +114,14 @@ class LocationService:
         return new_location
 
 
-class PersonService:
+class PersonListService:
     @staticmethod
-    def create(person: Dict) -> Person:
-        new_person = Person()
-        new_person.first_name = person["first_name"]
-        new_person.last_name = person["last_name"]
-        new_person.company_name = person["company_name"]
+    def getPersonList()-> List[Person]:
+        with grpc.insecure_channel('grpc-api-personlist:50089') as channel:
+            stub = personlist_pb2_grpc.PersonServiceStub(channel)
+            response = stub.GetAllPersons(personlist_pb2.EmptyRequest())
+            # for person in response.people:
+            #     print(f"{person.id}: {person.first_name}")
+            return response.people  
 
-        db.session.add(new_person)
-        db.session.commit()
 
-        return new_person
-
-    @staticmethod
-    def retrieve(person_id: int) -> Person:
-        person = db.session.query(Person).get(person_id)
-        return person
-
-    @staticmethod
-    def retrieve_all() -> List[Person]:
-        return db.session.query(Person).all()

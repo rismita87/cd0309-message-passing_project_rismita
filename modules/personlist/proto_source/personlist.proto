@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package person;
+
+
+// The Person message
+message Person {
+  int32 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string company_name = 4;
+}
+
+// The response message containing a list of people
+message PersonList {
+  repeated Person people = 1;
+}
+
+// Request message (could include filters in the future)
+message EmptyRequest {}
+
+// The service definition
+service PersonService {
+  rpc GetAllPersons (EmptyRequest) returns (PersonList);
+}

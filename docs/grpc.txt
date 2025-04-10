@@ -1,0 +1,4 @@
+## GRPC setup
+Within Project directory go to location modules\personlist
+To test the setup create python env using the requirements.txt in location modules\personlist\requirements.txt
+Then once the kubectl deployment and service is running in kubernetes you can run `python modules\personlist\udaconnect\personlist_requester.py` to test the grpc endpoint response

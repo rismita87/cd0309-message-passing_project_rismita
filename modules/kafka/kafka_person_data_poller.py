@@ -56,49 +56,18 @@ consumer = KafkaConsumer(
 )
 
 # Consume messages from the Kafka topic
-for message in consumer:
+def main() -> None:
+    for message in consumer:
     # Extract the message value
-    person_data = message.value
-    id = person_data.get("id")
-    first_name = person_data.get("first_name")
-    last_name = person_data.get("last_name")
-    company_name = person_data.get("company_name")
-    
-    # Insert the data into PostgreSQL
-    insert_into_postgres(id,first_name, last_name, company_name)
+        person_data = message.value
+        id = person_data.get("id")
+        first_name = person_data.get("first_name")
+        last_name = person_data.get("last_name")
+        company_name = person_data.get("company_name")
+        
+        # Insert the data into PostgreSQL
+        insert_into_postgres(id,first_name, last_name, company_name)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from kafka import KafkaConsumer
-import json
-
-consumer = KafkaConsumer(
-    'udaconnect_person_create',
-    bootstrap_servers='kafka-broker:9092',
-    auto_offset_reset='earliest',
-    enable_auto_commit=True,
-    group_id='my-consumer-group',
-    value_deserializer=lambda x: json.loads(x.decode('utf-8'))
-)
-
-print("Kafka consumer started...")
-
-for message in consumer:
-    print(f"Received message: {message.value}")
+if __name__ == "__main__":
+    main()
