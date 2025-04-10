@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "42f97209-e645-4431-87e6-24afbd4f1898",
+		"_postman_id": "37c55c10-e767-4e60-8bc0-65065e3a491a",
 		"name": "person_api",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20376198"
 	},
 	"item": [
 		{
@@ -12,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"18\",\r\n    \"first_name\": \"Abhirup\",\r\n    \"last_name\": \"Sarkar18\",\r\n    \"company_name\": \"TDC Net asi\"\r\n}",
+					"raw": "{\r\n    \"id\": \"11\",\r\n    \"first_name\": \"Rismita\",\r\n    \"last_name\": \"G\",\r\n    \"company_name\": \"abcd\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
