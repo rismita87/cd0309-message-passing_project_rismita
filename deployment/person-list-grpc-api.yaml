@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: grpc-api-personlist
+  name: grpc-api-personlist
+spec:
+  ports:
+  - name: "50089"
+    port: 50089
+    targetPort: 50089
+    nodePort: 30021
+  selector:
+    service: grpc-api-personlist
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: grpc-api-personlist
+  name: grpc-api-personlist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: grpc-api-personlist
+  template:
+    metadata:
+      labels:
+        service: grpc-api-personlist
+    spec:
+      containers:
+      - image: abhirupaec2022/grpc-api-personlist:latest
+        name: grpc-api-personlist
+        imagePullPolicy: Always
+      restartPolicy: Always
