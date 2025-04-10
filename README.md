@@ -103,7 +103,7 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 7. `sh scripts/run_db_command.sh <POD_NAME>` - Seed your database against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`)
 8. `sh scripts/create_kafka_topics.sh  <POD_NAME>` - Run this command to create the topics of kafka
 9. `kubectl apply -f deployment/kafka_consumer.yaml` - Set up kafka consumer which will poll the topic and insert data into the db
-10. `kubectl apply -f deployment/udaconnect-api_abh_persons.yaml` - Set up the person service and deployment for the person API
+10. `kubectl apply -f deployment/udaconnect-api_personservice.yaml` - Set up the person service and deployment for the person API
 11. `kubectl apply -f deployment/person-list-grpc-api.yaml` - Set up the person service and deployment for the person API
 
 Manually applying each of the individual `yaml` files is cumbersome but going through each step provides some context on the content of the starter project. In practice, we would have reduced the number of steps by running the command against a directory to apply of the contents: `kubectl apply -f deployment/`.
@@ -162,6 +162,7 @@ echo "hotdogsfordinner" | base64
 This is okay for development against an exclusively local environment and we want to keep the setup simple so that you can focus on the project tasks. However, in practice we should not commit our code with secret values into our repository. A CI/CD pipeline can help prevent that.
 
 ## GRPC setup
+
 The required command to create code from proto file if you are located in modules\personlist\ is
 `python -m grpc_tools.protoc -I./proto_source --python_out=./udaconnect/. --pyi_out=./udaconnect/. --grpc_python_out=./udaconnect/. ./proto_source/personlist.proto`
 To test the setup create python env using the requirements.txt in location modules\personlist\requirements.txt

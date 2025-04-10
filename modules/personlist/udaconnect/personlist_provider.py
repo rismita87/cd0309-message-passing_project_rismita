@@ -13,7 +13,7 @@ import requests
 # ]
 
 
-API_URL = "http://udaconnect-api-abhi-personservice:5000/person_api/persons"
+API_URL = "http://udaconnect-api-personservice:5000/person_api/persons"
 
 class PersonListGetter(personlist_pb2_grpc.PersonServiceServicer):
     def GetAllPersons(self, request, context):

@@ -6,10 +6,10 @@ metadata:
   name: grpc-api-personlist
 spec:
   ports:
-  - name: "50089"
-    port: 50089
-    targetPort: 50089
-    nodePort: 30021
+    - name: "50089"
+      port: 50089
+      targetPort: 50089
+      nodePort: 30021
   selector:
     service: grpc-api-personlist
   type: NodePort
@@ -31,7 +31,7 @@ spec:
         service: grpc-api-personlist
     spec:
       containers:
-      - image: abhirupaec2022/grpc-api-personlist:latest
-        name: grpc-api-personlist
-        imagePullPolicy: Always
+        - image: rismitaghosh/grpc-api-personlist:latest
+          name: grpc-api-personlist
+          imagePullPolicy: Always
       restartPolicy: Always
