@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "42f97209-e645-4431-87e6-24afbd4f1898",
+		"name": "person_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create new person",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"18\",\r\n    \"first_name\": \"Abhirup\",\r\n    \"last_name\": \"Sarkar18\",\r\n    \"company_name\": \"TDC Net asi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:32711/person_api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32711",
+					"path": [
+						"person_api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all persons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:32711/person_api/persons",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32711",
+					"path": [
+						"person_api",
+						"persons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get a specific person details(append id at the end of teh URL)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:32711/person_api/persons/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "32711",
+					"path": [
+						"person_api",
+						"persons",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
